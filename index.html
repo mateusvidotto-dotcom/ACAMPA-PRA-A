@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EstudHub IA — uma biblioteca interativa para entender, estudar e revisar Inteligência Artificial do básico aos sistemas avançados.">
+  <meta name="author" content="EstudHub">
+  <meta name="theme-color" content="#060914">
+  <meta name="robots" content="index,follow">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <title>EstudHub IA — Guia Interativo de Inteligência Artificial</title>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="background-grid" aria-hidden="true"></div>
+  <div class="background-glow glow-one" aria-hidden="true"></div>
+  <div class="background-glow glow-two" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#inicio" aria-label="EstudHub IA — início">
+        <span class="brand-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span><strong>EstudHub <em>IA</em></strong><small>Conhecer · Questionar · Validar · Criar</small></span>
+      </a>
+
+      <nav class="topnav" aria-label="Navegação principal">
+        <a href="#explorar">Explorar</a>
+        <a href="#estudhub">EstudHub</a>
+        <a href="#revisao">Revisão</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
+
+      <div class="top-actions">
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="Alternar tema">◐</button>
+        <button class="icon-btn mobile-only" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero container" id="inicio">
+      <div class="hero-copy reveal">
+        <span class="eyebrow"><i></i> GUIA DE ESTUDO • IA + ESTUDHUB</span>
+        <h1>Abra a caixa-preta da <span>Inteligência Artificial.</span></h1>
+        <p class="hero-lead">Uma biblioteca interativa construída a partir da apresentação completa do projeto: fundamentos, Machine Learning, Deep Learning, tokens, embeddings, Transformers, RAG, agentes, IA na educação, riscos e a aplicação da IA no EstudHub.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="startBtn" type="button">Começar agora <span>→</span></button>
+          <button class="btn btn-ghost" id="randomBtn" type="button">Abrir tema aleatório</button>
+        </div>
+        <div class="hero-stats">
+          <div><strong id="statTopics">91</strong><span>tópicos</span></div>
+          <div><strong>09</strong><span>trilhas</span></div>
+          <div><strong>∞</strong><span>anotações</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" aria-label="Diagrama conceitual da Inteligência Artificial">
+        <div class="ai-core"><span>IA</span><small>ecossistema</small></div>
+        <div class="orbit orbit-a"></div>
+        <div class="orbit orbit-b"></div>
+        <div class="orbit orbit-c"></div>
+        <div class="orbit-node node-data"><span>Dados</span><small>entrada</small></div>
+        <div class="orbit-node node-model"><span>Modelo</span><small>padrões</small></div>
+        <div class="orbit-node node-context"><span>Contexto</span><small>informação</small></div>
+        <div class="orbit-node node-output"><span>Saída</span><small>resultado</small></div>
+        <div class="hero-code"><span>prompt</span><b>→</b><span>tokens</span><b>→</b><span>modelo</span><b>→</b><span>resposta</span></div>
+      </div>
+    </section>
+
+    <section class="manifesto container reveal">
+      <div class="manifesto-mark">“</div>
+      <div><span class="eyebrow">IDEIA CENTRAL</span><p>IA não é uma resposta pronta. É um conjunto de tecnologias capazes de aprender padrões, processar informações, gerar conteúdo e auxiliar pessoas — <strong>mas seus resultados continuam sujeitos a erros, limitações e riscos.</strong></p></div>
+    </section>
+
+    <section class="study-dashboard container" aria-label="Painel de estudo">
+      <article class="dashboard-card"><span>✓</span><div><strong id="doneCount">0</strong><small>concluídos</small></div></article>
+      <article class="dashboard-card"><span>★</span><div><strong id="favoriteCount">0</strong><small>favoritos</small></div></article>
+      <article class="dashboard-card"><span>✎</span><div><strong id="noteCount">0</strong><small>anotações</small></div></article>
+      <article class="dashboard-card"><span>%</span><div><strong id="progressPercent">0%</strong><small>progresso</small></div></article>
+    </section>
+
+    <section class="explorer container" id="explorar">
+      <div class="section-head reveal">
+        <div><span class="eyebrow">MAPA DO CONHECIMENTO</span><h2>Estude no seu ritmo.</h2><p>Pesquise o tema que quiser, filtre por trilha, abra a explicação completa e marque o que já dominou.</p></div>
+        <div class="view-toggle"><button class="active" data-view="cards" type="button">Cartões</button><button data-view="list" type="button">Lista</button></div>
+      </div>
+
+      <div class="explorer-shell">
+        <aside class="study-sidebar" id="sidebar">
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Buscar no conteúdo..." autocomplete="off"><button id="clearSearch" type="button" aria-label="Limpar busca">×</button></label>
+          <div class="filter-title">TRILHAS</div>
+          <nav id="trailNav" class="trail-nav" aria-label="Trilhas de estudo"></nav>
+          <div class="sidebar-tip"><strong>Como estudar</strong><p>Abra um tema, leia a explicação, escreva sua própria anotação e marque-o como concluído.</p></div>
+        </aside>
+
+        <div class="topics-main">
+          <div class="active-trail" id="activeTrail"></div>
+          <div class="result-line" id="resultLine" aria-live="polite"></div>
+          <div class="topic-grid" id="topicGrid"></div>
+          <div class="empty-results" id="emptyResults" hidden><span>⌕</span><h3>Nenhum tema encontrado.</h3><p>Tente outro termo ou volte para todas as trilhas.</p><button class="btn btn-ghost" id="resetBtn" type="button">Limpar filtros</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="estudhub container" id="estudhub">
+      <div class="section-head reveal"><div><span class="eyebrow">CASO DE ESTUDO</span><h2>Onde a IA encontra o <span>EstudHub.</span></h2><p>O projeto descrito na apresentação usa IA como instrumento de apoio em pesquisa, ideação, prototipagem e comunicação, com curadoria humana.</p></div></div>
+      <div class="hub-flow reveal" id="hubFlow"></div>
+      <div class="hub-principles">
+        <article><span>01</span><h3>Copiloto, não autor</h3><p>A IA gera possibilidades; a equipe analisa, seleciona, corrige e decide.</p></article>
+        <article><span>02</span><h3>Fato ≠ hipótese</h3><p>Arquiteturas futuras, valores de exemplo e cenários hipotéticos precisam ser identificados.</p></article>
+        <article><span>03</span><h3>Humano no comando</h3><p>Tecnologia aumenta capacidade sem eliminar responsabilidade.</p></article>
+      </div>
+    </section>
+
+    <section class="tools-section container reveal">
+      <div class="section-head"><div><span class="eyebrow">FERRAMENTAS DE ESTUDO</span><h2>Você não precisa só ler.</h2><p>Use o site como caderno, mapa e revisão.</p></div></div>
+      <div class="tools-grid">
+        <button class="tool-card" type="button" data-scroll="#revisao"><span>01</span><strong>Revisar</strong><p>Faça questões e descubra onde ainda existem lacunas.</p><b>→</b></button>
+        <button class="tool-card" type="button" data-scroll="#notas"><span>02</span><strong>Anotar</strong><p>Registre definições com suas próprias palavras e dúvidas.</p><b>→</b></button>
+        <button class="tool-card" type="button" data-scroll="#glossario"><span>03</span><strong>Consultar</strong><p>Use o glossário para destravar as siglas e conceitos.</p><b>→</b></button>
+        <button class="tool-card" type="button" data-scroll="#fontes"><span>04</span><strong>Verificar</strong><p>Aprofunde o conteúdo por meio das referências indicadas.</p><b>→</b></button>
+      </div>
+    </section>
+
+    <section class="review-section container" id="revisao">
+      <div class="section-head reveal"><div><span class="eyebrow">REVISÃO</span><h2>Prove para você mesmo que entendeu.</h2><p>Questões rápidas baseadas nos conceitos do material. O resultado fica salvo apenas neste navegador.</p></div><button class="btn btn-ghost" id="newQuizBtn" type="button">Novo conjunto</button></div>
+      <div id="quizArea" class="quiz-grid"></div>
+    </section>
+
+    <section class="notes-section container" id="notas">
+      <div class="section-head reveal"><div><span class="eyebrow">CADERNO</span><h2>Seu espaço de anotações.</h2><p>As anotações são pessoais e ficam armazenadas localmente no navegador.</p></div><button class="btn btn-danger" id="clearNotesBtn" type="button">Limpar tudo</button></div>
+      <div id="notesArea"></div>
+    </section>
+
+    <section class="glossary-section container" id="glossario">
+      <div class="section-head reveal"><div><span class="eyebrow">GLOSSÁRIO</span><h2>As palavras que destravam a IA.</h2><p>Clique em um termo para encontrá-lo no Atlas.</p></div></div>
+      <div id="glossaryGrid" class="glossary-grid"></div>
+    </section>
+
+    <section class="sources-section container" id="fontes">
+      <div class="section-head reveal"><div><span class="eyebrow">REFERÊNCIAS</span><h2>Fontes antes de opiniões.</h2><p>A apresentação enviada é a base principal. Fontes técnicas e institucionais servem para aprofundamento e verificação.</p></div></div>
+      <div id="sourceGrid" class="source-grid"></div>
+      <div class="source-note"><strong>Nota de leitura:</strong> quando o conteúdo do EstudHub é apresentado como hipotético, o site sinaliza explicitamente essa condição para não confundir proposta futura com implementação comprovada.</div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <div><strong>EstudHub IA</strong><span>Guia interativo de Inteligência Artificial</span></div>
+    <div class="footer-quote">CONHECER → QUESTIONAR → VALIDAR → CRIAR</div>
+  </footer>
+
+  <dialog id="topicDialog" class="topic-dialog">
+    <div class="dialog-inner"><button class="dialog-close" id="dialogClose" type="button" aria-label="Fechar">×</button><div id="dialogBody"></div></div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="content.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
